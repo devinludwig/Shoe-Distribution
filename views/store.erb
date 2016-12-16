@@ -1,4 +1,4 @@
-<h1><%= @store.name %></h1>
+<h1 class="jumbotron"><%= @store.name %></h1>
 
 <% if @store.brands.any? %>
   <h3>Current brands in stock:</h3>
@@ -19,3 +19,5 @@
     <button type="submit">Assign Brands</button>
   </form>
 <% end %>
+
+<a href="/"><h1>Return to Main Page</h1></a>

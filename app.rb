@@ -21,12 +21,12 @@ patch('/') do
 end
 
 post('/store') do
-  Store.create({:name => params.fetch('store')})
+  Store.create({:name => params.fetch('store').capitalize})
   redirect to('/')
 end
 
 post('/brand') do
-  Brand.create({:name => params.fetch('brand')})
+  Brand.create({:name => params.fetch('brand').capitalize})
   redirect to('/')
 end
 
