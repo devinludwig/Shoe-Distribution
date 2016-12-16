@@ -41,6 +41,16 @@ describe('the update store path', {:type => :feature}) do
   end
 end
 
+describe('the store page path', {:type => :feature}) do
+  it('takes you to a store page') do
+    visit('/')
+    fill_in('store', :with => "Sammy's")
+    click_button('Add Store')
+    click_link("Sammy's")
+    expect(page).to have_content("Return to Main Page")
+  end
+end
+
 describe('the assign brands path', {:type => :feature}) do
   it('assigns the checked brands to the store') do
     visit('/')
@@ -49,6 +59,8 @@ describe('the assign brands path', {:type => :feature}) do
     fill_in('brand', :with => 'Nike')
     click_button('Add Brand')
     fill_in('brand', :with => 'Adidas')
+    click_button('Add Brand')
+    fill_in('brand', :with => 'Reebok')
     click_button('Add Brand')
     click_link("Sammy's")
     check('Nike')

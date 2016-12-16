@@ -45,5 +45,6 @@ patch('/store/:id') do
 end
 
 get('/brand/:id') do
-
+  @brand = Brand.find(params.fetch('id'))
+  erb(:brand)
 end

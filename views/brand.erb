@@ -1,0 +1,12 @@
+<h1 class="jumbotron"><%= @brand.name %></h1>
+
+<% if @brand.stores.any? %>
+  <h3>Current stockists:</h3>
+  <ul>
+    <% @brand.stores.each do |store| %>
+      <li><a href="/store/<%= store.id %>"><%= store.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<a href="/"><h1>Return to Main Page</h1></a>
