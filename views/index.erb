@@ -1,0 +1,13 @@
+<h1 class="jumbotron">Shoe Distribution Center</h1>
+<% if Store.all.any? %>
+  <h2>Stores:</h2>
+  <ul>
+    <% Store.all.each do |store| %>
+    <li><a href="/store/<%= store.id %>"><%= store.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+<form class="form-group" action="/store" method="post">
+  <input name="store" placeholder="New Store Here">
+  <button type="submit">Add Store</button>
+</form>
