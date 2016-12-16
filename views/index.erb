@@ -5,17 +5,17 @@
     <% Store.all.each do |store| %>
       <li class="list-group-item">
         <div class="row">
-          <a class="col-md-2" href="/store/<%= store.id %>"><%= store.name %></a>
-          <form class="col-md-2" action="/" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="hidden" name="store_id" value="<%= store.id %>">
-            <button class="btn-danger" type="submit">DELETE STORE</button>
-          </form>
-          <form class="col-md-6" action="/" method="post">
+          <a class="col-md-4" href="/store/<%= store.id %>"><%= store.name %></a>
+          <form id="<%= store.id %>" class="col-md-6" action="/" method="post">
             <input type="hidden" name="_method" value="patch">
             <input type="hidden" name="store_id" value="<%= store.id %>">
             <input name="name" placeholder="New Name Here">
-            <button type="submit" class="btn-warning">Update Store name</button>
+            <button type="submit" class="btn-warning">Update Store Name</button>
+          </form>
+          <form class="col-md-2" action="/" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="store_id" value="<%= store.id %>">
+            <button class="btn-danger" type="submit" id="<%= store.id %>">DELETE STORE</button>
           </form>
         </div>
       </li>
@@ -25,19 +25,19 @@
 
 <form class="form-group" action="/store" method="post">
   <input name="store" placeholder="New Store Here">
-  <button type="submit">Add Store</button>
+  <button type="submit" class="btn-primary">Add Store</button>
 </form>
 
 <% if Brand.all.any? %>
   <h2>Brands:</h2>
-  <ul>
+  <ul class="list-group">
     <% Brand.all.each do |brand| %>
-    <li><a href="/brand/<%= brand.id %>"><%= brand.name %></a></li>
+    <li class="list-group-item"><a href="/brand/<%= brand.id %>"><%= brand.name %></a></li>
     <% end %>
   </ul>
 <% end %>
 
 <form class="form-group" action="/brand" method="post">
   <input name="brand" placeholder="New Brand Here">
-  <button type="submit">Add Brand</button>
+  <button type="submit" class="btn-primary">Add Brand</button>
 </form>

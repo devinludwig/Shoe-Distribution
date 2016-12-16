@@ -21,12 +21,12 @@ patch('/') do
 end
 
 post('/store') do
-  Store.create({:name => params.fetch('store').capitalize})
+  Store.create({:name => params.fetch('store')})
   redirect to('/')
 end
 
 post('/brand') do
-  Brand.create({:name => params.fetch('brand').capitalize})
+  Brand.create({:name => params.fetch('brand')})
   redirect to('/')
 end
 
@@ -42,4 +42,8 @@ patch('/store/:id') do
     @store.update({:brand_ids => brands})
   end
   redirect to("/store/#{@store.id}")
+end
+
+get('/brand/:id') do
+
 end
