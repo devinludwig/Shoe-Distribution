@@ -11,6 +11,17 @@ require('./app')
 
 Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
 
+DB = PG.connect({:dbname => 'shoe_distribution_test'})
+
+RSpec.configure do |config|
+  config.color = true
+  config.after(:each) do
+    DB.exec('DELETE FROM stores *;')
+    DB.exec('DELETE FROM brands *;')
+    DB.exec('DELETE FROM brands_stores *;')
+  end
+end
+
 get("/") do
   erb(:index)
 end

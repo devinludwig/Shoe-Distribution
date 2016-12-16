@@ -10,5 +10,6 @@ group(:test) do
   gem("rspec")
   gem("capybara")
   gem("pry")
+  gem("launchy")
   gem("shoulda-matchers", '~> 2.0')
 end

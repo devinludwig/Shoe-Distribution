@@ -1,0 +1,21 @@
+<h1><%= @store.name %></h1>
+
+<% if @store.brands.any? %>
+  <h3>Current brands in stock:</h3>
+  <ul>
+    <% @store.brands.each do |brand| %>
+      <li><a href="/brand/<%= brand.id %>"><%= brand.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if Brand.all.any? %>
+  <form class="well form-group" action="/store/<%= @store.id %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <h3>Choose from the existing shoe brands to stock this store:</h3>
+    <% Brand.all.each do |brand| %>
+        <input type="checkbox" value="<%= brand.id %>" name="brand[]" id="<%=brand.name%>"> <%= brand.name %>
+    <% end %>
+    <button type="submit">Assign Brands</button>
+  </form>
+<% end %>
